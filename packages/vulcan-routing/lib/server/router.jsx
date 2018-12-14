@@ -75,6 +75,7 @@ function generateSSRData(options, req, res, renderProps) {
 
     css = req.css;
   } catch (err) {
+    console.log(req)
     console.error(`Error while server-rendering. date: ${new Date().toString()} url: ${req.url}`); // eslint-disable-line no-console
     console.error(err); // eslint-disable-line no-console
   }
@@ -146,6 +147,7 @@ export const RouterServer = {
           res.writeHead(302, { Location: redirectLocation.pathname + redirectLocation.search });
           res.end();
         } else if (renderProps) {
+          // console.log(options)
           sendSSRHtml(options, req, res, next, renderProps);
         } else {
           res.writeHead(404);

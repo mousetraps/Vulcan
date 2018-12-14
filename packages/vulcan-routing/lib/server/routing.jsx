@@ -58,10 +58,6 @@ Meteor.startup(() => {
       return <ApolloProvider store={store} client={apolloClient}><CookiesProvider cookies={req.universalCookies}>{appWithLocale}</CookiesProvider></ApolloProvider>;
     },
     preRender(req, res, app) {
-      console.log("REQUEST: ")
-      console.log(req)
-      console.log("RESPONSE: ")
-      console.log(res)
       runCallbacks('router.server.preRender', { req, res, app });
       return Promise.await(getDataFromTree(app));
     },
